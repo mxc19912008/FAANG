@@ -1,0 +1,61 @@
+<html>
+   <head>
+      <title>Google Charts Tutorial</title>
+      <script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js">
+      </script>
+      <script type = "text/javascript" src = "https://www.google.com/jsapi"></script>
+      <script type = "text/javascript">
+         google.charts.load('current', {packages: ['sankey']});     
+      </script>
+   </head>
+   
+   <body>
+      <div id = "container" style = "width: 550px; height: 400px; margin: 0 auto">
+      </div>
+      <script language = "JavaScript">
+         function drawChart() {
+            // Define the chart to be drawn.
+            var data = new google.visualization.DataTable();   
+            data.addColumn('string', 'From');
+            data.addColumn('string', 'To');
+            data.addColumn('number', 'Weight');
+
+            data.addRows([
+               [ 'Facebook', 'Apple ', 430 ],
+               [ 'Facebook', 'Amazon ', 385 ],
+               [ 'Facebook', 'Google ', 2100 ],
+               [ 'Facebook', 'Microsoft ', 451 ],
+               
+               [ 'Apple', 'Facebook ', 1400 ],
+               [ 'Apple', 'Amazon ', 1200 ],
+               [ 'Apple', 'Google ', 2600 ],
+               [ 'Apple', 'Microsoft ', 1000 ],
+               
+               [ 'Amazon', 'Facebook ', 2200 ],
+               [ 'Amazon', 'Apple ', 1000 ],
+               [ 'Amazon', 'Google ', 4000 ],
+               [ 'Amazon', 'Microsoft ', 3700 ],
+               
+               [ 'Google', 'Facebook ',  4200],
+               [ 'Google', 'Apple ', 1500 ],
+               [ 'Google', 'Amazon ', 1700 ],
+               [ 'Google', 'Microsoft ', 1800 ],
+               
+               [ 'Microsoft', 'Facebook ', 4100 ],
+               [ 'Microsoft', 'Apple ', 2100 ],
+               [ 'Microsoft', 'Amazon ', 5600 ],
+               [ 'Microsoft', 'Google ', 7900 ],
+               
+            ]);	
+
+            // Set chart options
+            var options = {width: 550};
+                  
+            // Instantiate and draw the chart.
+            var chart = new google.visualization.Sankey(document.getElementById('container'));
+            chart.draw(data, options);
+         }
+         google.charts.setOnLoadCallback(drawChart);
+      </script>
+   </body>
+</html>
